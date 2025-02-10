@@ -1,4 +1,5 @@
 #include "main.h"
+#include "devices.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 
 /**
@@ -59,7 +60,15 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+	// set position to x:0, y:0, heading:0
+    chassis.setPose(0, 0, 0);
+    // turn to face heading 90 with a very long timeout
+    chassis.turnToHeading(90, 100000);
+
+	// move 48" forwards
+    // chassis.moveToPoint(0, 48, 10000);
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -75,21 +84,33 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::MotorGroup left_mg({1, -2, 3});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
-	pros::MotorGroup right_mg({-4, 5, -6});  // Creates a motor group with forwards port 5 and reversed ports 4 & 6
-
-
 	while (true) {
-		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);  // Prints status of the emulated screen LCDs
+        // get left y and right x positions
+        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
-		// Arcade control scheme
-		int dir = master.get_analog(ANALOG_LEFT_Y);    // Gets amount forward/backward from left joystick
-		int turn = master.get_analog(ANALOG_RIGHT_X);  // Gets the turn left/right from right joystick
-		left_mg.move(dir - turn);                      // Sets left motor voltage
-		right_mg.move(dir + turn);                     // Sets right motor voltage
-		pros::delay(20);                               // Run for 20 ms then update
-	}
+        // move the robot
+        chassis.arcade(leftY, rightX);
+
+		// intake
+		intake = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1); 
+		intake_rev = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2); 
+
+		if (intake){		
+			intake_motors.move(127);
+		} else if (intake_rev){
+		    intake_motors.move(-127);
+		} else {
+			intake_motors.move(0);
+		}
+      
+	  	// toggle clamp
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+			clamp_state = !clamp_state;
+			clamp_sol.set_value(clamp_state);
+		}
+
+        // delay to save resources
+        pros::delay(10);
+    }
 }

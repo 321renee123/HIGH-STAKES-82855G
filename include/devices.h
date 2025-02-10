@@ -28,7 +28,6 @@ intake - 20
 inline pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 inline bool clamp_state = false;
-inline bool clamp_on = false;
 
 inline pros::MotorGroup left_drive({ -10, -9, -17 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
 inline pros::MotorGroup right_drive({ 16, 18, 20 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
@@ -61,15 +60,14 @@ inline Imu imu(IMU_PORT);
 
 //UNCOMMENT THIS:
 inline Rotation vert_tracking(VERT_TRACKING_WHEEL);
-//extern Rotation horizontal_rotation(HOR_TRACKING_WHEEL);
+inline Rotation hor_tracking(HOR_TRACKING_WHEEL);
 
 //uncomment this:
-//extern lemlib::TrackingWheel vertical_tracking_wheel(&vertical_rotation, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!!!!
-//extern lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_rotation, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!
+inline lemlib::TrackingWheel vertical_tracking_wheel(&vert_tracking, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!!!!
+inline lemlib::TrackingWheel horizontal_tracking_wheel(&hor_tracking, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!
 
 // odom sensors
 
-//uncomment this:
 
 inline lemlib::OdomSensors sensors(nullptr,
                              nullptr,
@@ -79,20 +77,21 @@ inline lemlib::OdomSensors sensors(nullptr,
  );
 
 // lateral PID controller
-
+// RMB TO RESTORE OG VALUES
 inline lemlib::ControllerSettings lateral_controller(10, // proportional gain (kP)
                                                0, // integral gain (kI)
                                                3, // derivative gain (kD)
-                                               3, // anti windup
-                                               1, // small error range, in inches
-                                               100, // small error range timeout, in milliseconds
-                                               3, // large error range, in inches
-                                               500, // large error range timeout, in milliseconds
-                                               20 // maximum acceleration (slew)
+                                               0, // anti windup
+                                               0, // small error range, in inches
+                                               0, // small error range timeout, in milliseconds
+                                               0, // large error range, in inches
+                                               0, // large error range timeout, in milliseconds
+                                               0 // maximum acceleration (slew)
  );
 
 
-// // angular PID controller
+// angular PID controller
+// RMB TO RESTORE OG VALUES
 inline lemlib::ControllerSettings angular_controller(2, // proportional gain (kP)
                                                0, // integral gain (kI)
                                                10, // derivative gain (kD)
@@ -105,7 +104,6 @@ inline lemlib::ControllerSettings angular_controller(2, // proportional gain (kP
 );
 
 
-// //uncomment this:
 inline lemlib::Chassis chassis(drivetrain,
                         lateral_controller, // lateral PID settings
                         angular_controller, // angular PID settings
