@@ -3,34 +3,31 @@
 #include "lemlib/api.hpp"
 
 /*
-left front - 14
-left middle - 16
-left back - 8
+left front - 8
+left middle - 19
+left back - 18
 
 
-right front - 18
-right middle - 17
-right back -12
+right front - 6
+right middle - 7
+right back - 20
 
 wall stake mech - 15
 
-intake - 20
+intake - 17, 10
 */
 
-//#define INTAKE_PORT 13
-//#define INTAKE1_PORT 2
 #define CLAMP_PORT 'A'
-#define WALL_STAKE_MECH_PORT 14
-#define IMU_PORT 1 
-#define VERT_TRACKING_WHEEL 19 // arbitrary port number
-#define HOR_TRACKING_WHEEL 5 // arbitrary port number
+#define IMU_PORT 5
+#define VERT_TRACKING_WHEEL 9 // arbitrary port number
+#define HOR_TRACKING_WHEEL 16 // arbitrary port number
 
 inline pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 inline bool clamp_state = false;
 
-inline pros::MotorGroup left_drive({ -10, -9, -17 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
-inline pros::MotorGroup right_drive({ 16, 18, 20 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
+inline pros::MotorGroup left_drive({ -18, -19, -8 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
+inline pros::MotorGroup right_drive({ 20, 7, 6 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
 
 inline lemlib::ExpoDriveCurve steer_curve(3, // joystick deadband out of 127
                                   10, // minimum output where drivetrain will move out of 127
@@ -45,14 +42,14 @@ inline lemlib::ExpoDriveCurve t_curve(0, // joystick deadband out of 127
 
 inline lemlib::Drivetrain drivetrain(&left_drive, // left motor group
                               &right_drive, // right motor group`
-                              11.6, // 11.6 inch track width 
+                              12.5, // 12.5 inch track width 
                               lemlib::Omniwheel::NEW_325, // 3.25" omnis 
                               450, // 450 rpm drivetrain
                               2 // horizontal drift
 );
 
 
-inline pros::MotorGroup intake_motors({13, 12}); 
+inline pros::MotorGroup intake_motors({17, -10}); 
 //inline Motor intake_motor(INTAKE_PORT);
 inline pros::Motor wall_stake_mech (WALL_STAKE_MECH_PORT);
 inline pros::ADIDigitalOut clamp_sol(CLAMP_PORT, clamp_state);
@@ -63,15 +60,15 @@ inline pros::Rotation vert_tracking(VERT_TRACKING_WHEEL);
 inline pros::Rotation hor_tracking(HOR_TRACKING_WHEEL);
 
 //uncomment this:
-inline lemlib::TrackingWheel vertical_tracking_wheel(&vert_tracking, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!!!!
-inline lemlib::TrackingWheel horizontal_tracking_wheel(&hor_tracking, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!
+inline lemlib::TrackingWheel vertical_tracking_wheel(&vert_tracking, lemlib::Omniwheel::NEW_275_HALF, 0.5); // arbitrary offset number!!!!!!!!!!!
+inline lemlib::TrackingWheel horizontal_tracking_wheel(&hor_tracking, lemlib::Omniwheel::NEW_275_HALF, -1.25); // arbitrary offset number!!!!!!!!
 
 // odom sensors
 
 
-inline lemlib::OdomSensors sensors(nullptr,
+inline lemlib::OdomSensors sensors(&vertical_tracking_wheel,
                              nullptr,
-                             nullptr,
+                             &horizontal_tracking_wheel,
                              nullptr,
                              &imu
  );
