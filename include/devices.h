@@ -51,7 +51,6 @@ inline lemlib::Drivetrain drivetrain(&left_drive, // left motor group
 
 inline pros::MotorGroup intake_motors({17, -10}); 
 //inline Motor intake_motor(INTAKE_PORT);
-inline pros::Motor wall_stake_mech (WALL_STAKE_MECH_PORT);
 inline pros::ADIDigitalOut clamp_sol(CLAMP_PORT, clamp_state);
 inline pros::Imu imu(IMU_PORT);
 
