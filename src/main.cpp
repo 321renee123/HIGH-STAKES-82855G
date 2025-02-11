@@ -1,6 +1,6 @@
 #include "main.h"
-#include "devices.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
+#include "devices.h"
 
 /**
  * A callback function for LLEMU's center button.

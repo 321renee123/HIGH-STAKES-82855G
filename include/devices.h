@@ -1,5 +1,5 @@
 #pragma once
-#include "main.h"
+// #include "main.h"
 #include "lemlib/api.hpp"
 
 /*
@@ -23,7 +23,7 @@ intake - 20
 #define WALL_STAKE_MECH_PORT 14
 #define IMU_PORT 1 
 #define VERT_TRACKING_WHEEL 19 // arbitrary port number
-#define HOR_TRACKING_WHEEL null // arbitrary port number
+#define HOR_TRACKING_WHEEL 5 // arbitrary port number
 
 inline pros::Controller master(pros::E_CONTROLLER_MASTER);
 
@@ -54,13 +54,13 @@ inline lemlib::Drivetrain drivetrain(&left_drive, // left motor group
 
 inline pros::MotorGroup intake_motors({13, 12}); 
 //inline Motor intake_motor(INTAKE_PORT);
-inline Motor wall_stake_mech (WALL_STAKE_MECH_PORT);
-inline ADIDigitalOut clamp_sol(CLAMP_PORT, clamp_state);
-inline Imu imu(IMU_PORT);
+inline pros::Motor wall_stake_mech (WALL_STAKE_MECH_PORT);
+inline pros::ADIDigitalOut clamp_sol(CLAMP_PORT, clamp_state);
+inline pros::Imu imu(IMU_PORT);
 
 //UNCOMMENT THIS:
-inline Rotation vert_tracking(VERT_TRACKING_WHEEL);
-inline Rotation hor_tracking(HOR_TRACKING_WHEEL);
+inline pros::Rotation vert_tracking(VERT_TRACKING_WHEEL);
+inline pros::Rotation hor_tracking(HOR_TRACKING_WHEEL);
 
 //uncomment this:
 inline lemlib::TrackingWheel vertical_tracking_wheel(&vert_tracking, lemlib::Omniwheel::NEW_275_HALF, -1); // arbitrary offset number!!!!!!!!!!!
