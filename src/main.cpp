@@ -86,15 +86,15 @@ void autonomous() {
 void opcontrol() {
 	while (true) {
         // get left y and right x positions
-        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        int leftY = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
         // move the robot
         chassis.arcade(leftY, rightX);
 
 		// intake
-		intake = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1); 
-		intake_rev = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2); 
+		bool intake = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1); 
+		bool intake_rev = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2); 
 
 		if (intake){		
 			intake_motors.move(127);
