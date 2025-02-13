@@ -26,8 +26,8 @@ inline pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 inline bool clamp_state = false;
 
-inline pros::MotorGroup left_drive({ -8, -19, -18 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
-inline pros::MotorGroup right_drive({ 20, 7, 6 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
+inline pros::MotorGroup left_drive({ 18, 19, 8 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
+inline pros::MotorGroup right_drive({ -20, -7, -6 }, pros::v5::MotorGears::blue, pros::v5::MotorUnits::rotations);
 
 inline lemlib::ExpoDriveCurve steer_curve(3, // joystick deadband out of 127
                                   10, // minimum output where drivetrain will move out of 127
@@ -49,8 +49,8 @@ inline lemlib::Drivetrain drivetrain(&left_drive, // left motor group
 );
 
 
-inline pros::MotorGroup intake_motors({17, 10}); 
-//inline Motor intake_motor(INTAKE_PORT);
+inline pros::MotorGroup intake_motors({17, -10}); 
+//inline Motor intake_motor(INTAKE_PORT);M
 inline pros::ADIDigitalOut clamp_sol(CLAMP_PORT, clamp_state);
 inline pros::Imu imu(IMU_PORT);
 
