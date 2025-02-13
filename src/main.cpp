@@ -30,6 +30,17 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 	chassis.calibrate();
+	pros::Task screenTask([&]()
+                          {
+        while (true) {
+            // print robot location to the brain screen 
+            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+            // log position telemetry
+            // delay to save resources
+            pros::delay(50);
+        } });
 
 }
 
@@ -115,4 +126,5 @@ void opcontrol() {
         // delay to save resources
         pros::delay(10);
     }
+
 }
