@@ -26,8 +26,8 @@ inline pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 inline bool clamp_state = false;
 
-inline pros::MotorGroup left_drive({ 18, 19, 8 }, pros::v5::MotorGears::blue);
-inline pros::MotorGroup right_drive({ -20, -7, -6 }, pros::v5::MotorGears::blue);
+inline pros::MotorGroup left_drive({ -18, -19, -8 }, pros::v5::MotorGears::blue);
+inline pros::MotorGroup right_drive({ 20, 7, 6 }, pros::v5::MotorGears::blue);
 
 inline lemlib::ExpoDriveCurve steer_curve(3, // joystick deadband out of 127
                                   10, // minimum output where drivetrain will move out of 127
@@ -88,9 +88,9 @@ inline lemlib::ControllerSettings lateral_controller(10, // proportional gain (k
 
 // angular PID controller
 // RMB TO RESTORE OG VALUES
-inline lemlib::ControllerSettings angular_controller(0.45, // proportional gain (kP)
+inline lemlib::ControllerSettings angular_controller(2.5, // proportional gain (kP)
                                                0, // integral gain (kI)
-                                               0, // derivative gain (kD)
+                                               12.5, // derivative gain (kD)
                                                0, // anti windup
                                                0, // small error range, in degrees
                                                0, // small error range timeout, in milliseconds
