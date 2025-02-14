@@ -76,8 +76,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 	// set position to x:0, y:0, heading:0
-    chassis.setPose(0, 0, 0);
-	prog_skills1();
+	prog_skills3();
 }
 
 /**
@@ -107,9 +106,9 @@ void opcontrol() {
 		bool intake_rev = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2); 
 
 		if (intake){		
-			intake_motors.move(127);
+			intake_motors.move(100);
 		} else if (intake_rev){
-		    intake_motors.move(-127);
+		    intake_motors.move(-100);
 		} else {
 			intake_motors.move(0);
 		}
