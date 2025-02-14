@@ -1,6 +1,7 @@
 #include "main.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "devices.h"
+#include "auton.cpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -76,34 +77,7 @@ void competition_initialize() {}
 void autonomous() {
 	// set position to x:0, y:0, heading:0
     chassis.setPose(0, 0, 0);
-    // turn to face heading 90 with a very long timeout
-    //chassis.turnToHeading(180, 100000);
-	// chassis.moveToPose(0, 0, 5000, 3000);
-	// chassis.moveToPose(22.136, 15.304, 5000, 3000);
-	// chassis.moveToPose(23.451, 40.719, 5000, 3000);
-	// chassis.moveToPose(58.209, 63.947, 5000, 3000);
-	// chassis.moveToPose(46.184, 40.309, 5000, 3000);
-	// chassis.moveToPose(57.935, 17.08, 5000, 3000);
-	// chassis.moveToPose(45.364, 17.08, 5000, 3000);
-	// chassis.moveToPose(46.458, 5.329, 5000, 3000);
-	// chassis.moveToPose(64.767, -0.956, 5000, 3000);
-
-
-	// chassis.setPose(-64, 0, 90);
-	// chassis.moveToPose(0, 0, 5000, 3000);
-	// chassis.moveToPose(-16.455, 3.849, 5000, 3000);
-	// chassis.moveToPose(-31.041, 7.103, 5000, 3000);
-	// chassis.moveToPose(-58.098, -12.572, 5000, 3000);
-	// chassis.moveToPose(-61.229, -20.511, 5000, 3000);
-	// chassis.moveToPose(-39.142, -12.751, 5000, 3000);
-	// chassis.moveToPose(5.392, -33.596, 5000, 3000);
-	// chassis.moveToPose(-11.789, -35.311, 5000, 3000);
-	// chassis.moveToPose(-24.37, -37.005, 5000, 3000);
-	// chassis.moveToPose(-3.496, -42.897, 5000, 3000);
-	// chassis.moveToPose(-1.135, -48.814, 5000, 3000);
-	
-	// move 48" forwards
-	chassis.moveToPoint(0, 20, 10000);
+	prog_skills1();
 }
 
 /**
@@ -147,7 +121,7 @@ void opcontrol() {
 		}
 
         // delay to save resources
-        pros::delay(10);
+        pros::delay(5);
     }
 
 }
