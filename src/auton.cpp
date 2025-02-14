@@ -41,7 +41,7 @@ void prog_skills2() {
 	chassis.moveToPose(-1.135, -48.814, 5000, 3000);
 }
 
-prog_skills3() {
+void prog_skills3() {
     chassis.moveTo(0, 0, 5000);
     chassis.moveTo(15.99, 18.054, 5000);
     clamp_sol.set_value(true);
