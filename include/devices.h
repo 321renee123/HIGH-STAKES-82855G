@@ -45,7 +45,7 @@ inline lemlib::Drivetrain drivetrain(&left_drive, // left motor group
                               12.5, // 12.5 inch track width 
                               lemlib::Omniwheel::NEW_325, // 3.25" omnis 
                               450, // 450 rpm drivetrain
-                              2 // horizontal drift
+                              8 // horizontal drift
 );
 
 
@@ -76,7 +76,7 @@ inline lemlib::OdomSensors sensors(&vertical_tracking_wheel,
 // RMB TO RESTORE OG VALUES
 inline lemlib::ControllerSettings lateral_controller(10, // proportional gain (kP)
                                                0, // integral gain (kI)
-                                               3, // derivative gain (kD)
+                                            23, // derivative gain (kD)
                                                0, // anti windup
                                                0, // small error range, in inches
                                                0, // small error range timeout, in milliseconds
@@ -90,7 +90,7 @@ inline lemlib::ControllerSettings lateral_controller(10, // proportional gain (k
 // RMB TO RESTORE OG VALUES
 inline lemlib::ControllerSettings angular_controller(2.5, // proportional gain (kP)
                                                0, // integral gain (kI)
-                                               12.6, // derivative gain (kD)
+                                               27, // derivative gain (kD)
                                                0, // anti windup
                                                0, // small error range, in degrees
                                                0, // small error range timeout, in milliseconds

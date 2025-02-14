@@ -1,6 +1,7 @@
 #include "main.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "devices.h"
+#include "auton.cpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -32,15 +33,15 @@ void initialize() {
 	chassis.calibrate();
 	pros::Task screenTask([&]()
                           {
-        while (true) {
-            // print robot location to the brain screen 
-            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
-            // log position telemetry
-            // delay to save resources
-            pros::delay(50);
-        } });
+	while (true) {
+		// print robot location to the brain screen 
+		pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+		pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+		pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+		// log position telemetry
+		// delay to save resources
+		pros::delay(50);
+	} });
 
 }
 
@@ -76,11 +77,7 @@ void competition_initialize() {}
 void autonomous() {
 	// set position to x:0, y:0, heading:0
     chassis.setPose(0, 0, 0);
-    // turn to face heading 90 with a very long timeout
-    chassis.turnToHeading(180, 100000);
-
-	// move 48" forwards
-    // chassis.moveToPoint(0, 48, 10000);
+	prog_skills1();
 }
 
 /**
@@ -124,7 +121,7 @@ void opcontrol() {
 		}
 
         // delay to save resources
-        pros::delay(10);
+        pros::delay(5);
     }
 
 }
