@@ -90,7 +90,7 @@ inline lemlib::ControllerSettings lateral_controller(10, // proportional gain (k
 // RMB TO RESTORE OG VALUES
 inline lemlib::ControllerSettings angular_controller(2.5, // proportional gain (kP)
                                                0, // integral gain (kI)
-                                               12.5, // derivative gain (kD)
+                                               12.6, // derivative gain (kD)
                                                0, // anti windup
                                                0, // small error range, in degrees
                                                0, // small error range timeout, in milliseconds
