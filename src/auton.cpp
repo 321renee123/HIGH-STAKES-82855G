@@ -43,6 +43,9 @@ void prog_skills2() {
 
 void prog_skills3() {
     chassis.moveTo(0, 0, 5000);
+    intake_motors.move(127);
+    pros::delay(5000);
+    intake_motors.move(0);
     chassis.moveTo(15.99, 18.054, 5000);
     clamp_sol.set_value(true);
     pros::delay(500);
