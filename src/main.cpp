@@ -1,11 +1,10 @@
 #include "main.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "devices.h"
-#include "auton.cpp"
 
 /**
  * A callback function for LLEMU's center button.
- *
+ *git
  * When this callback is fired, it will toggle line 2 of the LCD text between
  * "I was pressed!" and nothing.
  */
@@ -76,7 +75,24 @@ void competition_initialize() {}
  */
 void autonomous() {
 	// set position to x:0, y:0, heading:0
-	prog_skills3();
+	//prog_skills3();
+	chassis.setPose(-65,0,90);
+    intake_motors.move(127);
+    pros::delay(5000);
+    intake_motors.move(0);
+    chassis.moveToPose(-47, -16, 0, 5000);
+    clamp_sol.set_value(true);
+    pros::delay(500);
+    chassis.moveToPose(-64, -63, 30, 5000);
+    clamp_sol.set_value(false);
+    pros::delay(500);
+    chassis.moveToPose(-46, 18, 180, 5000);
+    clamp_sol.set_value(true);
+    pros::delay(500);
+    chassis.moveToPose(-64, 63, 150, 5000);
+    clamp_sol.set_value(false);
+    pros::delay(500);
+
 }
 
 /**
