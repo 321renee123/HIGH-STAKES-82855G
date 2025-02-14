@@ -32,15 +32,15 @@ void initialize() {
 	chassis.calibrate();
 	pros::Task screenTask([&]()
                           {
-        while (true) {
-            // print robot location to the brain screen 
-            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
-            // log position telemetry
-            // delay to save resources
-            pros::delay(50);
-        } });
+	while (true) {
+		// print robot location to the brain screen 
+		pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+		pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+		pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+		// log position telemetry
+		// delay to save resources
+		pros::delay(50);
+	} });
 
 }
 
@@ -77,10 +77,33 @@ void autonomous() {
 	// set position to x:0, y:0, heading:0
     chassis.setPose(0, 0, 0);
     // turn to face heading 90 with a very long timeout
-    chassis.turnToHeading(180, 100000);
+    //chassis.turnToHeading(180, 100000);
+	// chassis.moveToPose(0, 0, 5000, 3000);
+	// chassis.moveToPose(22.136, 15.304, 5000, 3000);
+	// chassis.moveToPose(23.451, 40.719, 5000, 3000);
+	// chassis.moveToPose(58.209, 63.947, 5000, 3000);
+	// chassis.moveToPose(46.184, 40.309, 5000, 3000);
+	// chassis.moveToPose(57.935, 17.08, 5000, 3000);
+	// chassis.moveToPose(45.364, 17.08, 5000, 3000);
+	// chassis.moveToPose(46.458, 5.329, 5000, 3000);
+	// chassis.moveToPose(64.767, -0.956, 5000, 3000);
 
+
+	// chassis.setPose(-64, 0, 90);
+	// chassis.moveToPose(0, 0, 5000, 3000);
+	// chassis.moveToPose(-16.455, 3.849, 5000, 3000);
+	// chassis.moveToPose(-31.041, 7.103, 5000, 3000);
+	// chassis.moveToPose(-58.098, -12.572, 5000, 3000);
+	// chassis.moveToPose(-61.229, -20.511, 5000, 3000);
+	// chassis.moveToPose(-39.142, -12.751, 5000, 3000);
+	// chassis.moveToPose(5.392, -33.596, 5000, 3000);
+	// chassis.moveToPose(-11.789, -35.311, 5000, 3000);
+	// chassis.moveToPose(-24.37, -37.005, 5000, 3000);
+	// chassis.moveToPose(-3.496, -42.897, 5000, 3000);
+	// chassis.moveToPose(-1.135, -48.814, 5000, 3000);
+	
 	// move 48" forwards
-    // chassis.moveToPoint(0, 48, 10000);
+	chassis.moveToPoint(0, 20, 10000);
 }
 
 /**
