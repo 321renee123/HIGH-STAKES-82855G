@@ -250,8 +250,8 @@ inline pros::Rotation vert_tracking(VERT_TRACKING_WHEEL);
 inline pros::Rotation hor_tracking(HOR_TRACKING_WHEEL);
 
 //uncomment this:
-inline lemlib::TrackingWheel vertical_tracking_wheel(&vert_tracking, lemlib::Omniwheel::OLD_275_HALF, 0.5); // arbitrary offset number!!!!!!!!!!!
-inline lemlib::TrackingWheel horizontal_tracking_wheel(&hor_tracking, lemlib::Omniwheel::OLD_275_HALF, -1.25); // arbitrary offset number!!!!!!!!
+inline lemlib::TrackingWheel vertical_tracking_wheel(&vert_tracking, lemlib::Omniwheel::OLD_275_HALF, -1.5); // arbitrary offset number!!!!!!!!!!!
+inline lemlib::TrackingWheel horizontal_tracking_wheel(&hor_tracking, lemlib::Omniwheel::OLD_275_HALF, -2); // arbitrary offset number!!!!!!!!
 
 // odom sensors
 

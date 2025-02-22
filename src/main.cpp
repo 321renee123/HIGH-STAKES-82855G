@@ -97,35 +97,35 @@ void autonomous() {
  */
 void opcontrol() {
 	prog_skills2();
-	while (true) {
-        // get left y and right x positions
-        int leftY = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+	// while (true) {
+    //     // get left y and right x positions
+    //     int leftY = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    //     int rightX = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
-        // move the robot
-        chassis.arcade(leftY, rightX);
+    //     // move the robot
+    //     chassis.arcade(leftY, rightX);
 
-		// intake
-		bool intake = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1); 
-		bool intake_rev = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2); 
+	// 	// intake
+	// 	bool intake = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1); 
+	// 	bool intake_rev = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2); 
 
-		if (intake){		
-			intake_motors.move(127);
-		} else if (intake_rev){
-		    intake_motors.move(-127);
-		} else {
-			intake_motors.move(0);
-		}
+	// 	if (intake){		
+	// 		intake_motors.move(127);
+	// 	} else if (intake_rev){
+	// 	    intake_motors.move(-127);
+	// 	} else {
+	// 		intake_motors.move(0);
+	// 	}
       
-	  	// toggle clamp
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-			clamp_state = !clamp_state;
-			clamp_sol.set_value(clamp_state);
-		}
+	//   	// toggle clamp
+	// 	if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+	// 		clamp_state = !clamp_state;
+	// 		clamp_sol.set_value(clamp_state);
+	// 	}
 
-        // delay to save resources
-        pros::delay(5);
-    }
+    //     // delay to save resources
+    //     pros::delay(5);
+    // }
 	
 
 }
