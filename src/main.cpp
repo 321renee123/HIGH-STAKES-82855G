@@ -76,8 +76,8 @@ void competition_initialize() {}
  */
 void autonomous() {
 	// set position to x:0, y:0, heading:0
-	//chassis.setPose(0,0,0);
-	//chassis.moveToPoint(0, 48, 5000);
+	chassis.setPose(0,0,0);
+	chassis.moveToPoint(0, 48, 5000);
 	// chassis.moveToPoint(0,30,4000);
 	
 }

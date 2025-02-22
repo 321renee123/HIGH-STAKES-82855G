@@ -1,5 +1,7 @@
 #pragma once
-// #include "main.h"
+#include "main.h"
+#include "pros/imu.hpp"
+#include <cmath>
 #include "lemlib/api.hpp"
 
 /*
@@ -267,25 +269,25 @@ inline lemlib::OdomSensors sensors(&vertical_tracking_wheel,
 // RMB TO RESTORE OG VALUES
 inline lemlib::ControllerSettings lateral_controller(5, // proportional gain (kP)
                                                0, // integral gain (kI)
-                                            37, // derivative gain (kD)
+                                            44, // derivative gain (kD)
                                             3, // anti windup
                                             1, // small error range, in inches
                                             100, // small error range timeout, in milliseconds
                                             3, // large error range, in inches
                                             500, // large error range timeout, in milliseconds
-                                            20 // maximum acceleration (slew)
+                                            0 // maximum acceleration (slew)
  );
 
 
 // angular PID controller
 // RMB TO RESTORE OG VALUES
-inline lemlib::ControllerSettings angular_controller(0.7, // proportional gain (kP)
+inline lemlib::ControllerSettings angular_controller(1.5, // proportional gain (kP)
                                                0, // integral gain (kI)
-                                               0.64, // derivative gain (kD)
+                                               12, // derivative gain (kD)
                                                3, // anti windup
-                                               1, // small error range, in degrees
+                                               1, // small error range, in inches
                                                100, // small error range timeout, in milliseconds
-                                               3, // large error range, in degrees
+                                               3, // large error range, in inches
                                                500, // large error range timeout, in milliseconds
                                                0 // maximum acceleration (slew)
 );
