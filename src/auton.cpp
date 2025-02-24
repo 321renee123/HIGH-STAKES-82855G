@@ -45,7 +45,7 @@ void prog_skills2() {
     pros::delay(900);
     chassis.moveToPose(-46, 0, 90, 1000);
     chassis.turnToPoint(-53, -17, 1000, {.forwards=false});
-	chassis.moveToPoint(-53, -14, 2000, {.forwards=false}); // clamp right mogo first
+	chassis.moveToPoint(-53, -14.5, 2000, {.forwards=false}); // clamp right mogo first
 	chassis.waitUntilDone();
     clamp_sol.set_value(true);
     pros::delay(500);
@@ -54,26 +54,27 @@ void prog_skills2() {
     chassis.waitUntilDone();
     pros::delay(1000);
     chassis.turnToPoint(-70,-68, 1000, {.forwards=false});
-    chassis.moveToPoint(-70, -60, 1000,{.forwards=false}); 
+    chassis.moveToPoint(-65, -60, 1000,{.forwards=false}); 
     chassis.waitUntilDone();
     intake_motors.move(0);
     clamp_sol.set_value(false);
     pros::delay(500);
-    chassis.moveToPose(-44, 0, 0, 1000);
-    chassis.turnToPoint(-44,5,1000, {.forwards=false});
-    chassis.moveToPoint(-44,5,1000, {.forwards=false});
+    chassis.moveToPose(-45, 0, 0, 1000);
+    chassis.turnToPoint(-45,5,1000, {.forwards=false});
+    chassis.moveToPoint(-45,5,1000, {.forwards=false});
     chassis.waitUntilDone();
     clamp_sol.set_value(true);
     pros::delay(500);
-    chassis.turnToPoint(-40, 20, 1000);
+    chassis.turnToPoint(-45, 20, 1000);
     intake_motors.move(127);
-    chassis.moveToPoint(-40, 45, 6000);
+    chassis.moveToPoint(-45, 46, 6000);
     chassis.waitUntilDone();
     chassis.turnToPoint(-70,50, 1000, {.forwards=false});
-    chassis.moveToPoint(-70,50,1000, {.forwards=false});
+    chassis.moveToPoint(-58,60,1000, {.forwards=false});
     chassis.waitUntilDone();
     clamp_sol.set_value(false);
-    chassis.moveToPose(34, 31, 130, 3000); // go to other side of field
+    pros::delay(500);
+    chassis.moveToPose(34, 20, 130, 3000); // go to other side of field
     chassis.moveToPose(59, 6, 142, 1000);
     // chassis.moveToPose(59, 3, 180, 2000);
     // chassis.moveToPose(59, 24, 180, 2000, {.forwards=false});
