@@ -75,7 +75,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	prog_skills2();
+	mogorush_blue();
 	
 }
 
