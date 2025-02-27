@@ -27,15 +27,7 @@ void prog_skills1() {
     chassis.waitUntilDone();
     clamp_sol.set_value(false);
     pros::delay(500);
-    chassis.moveToPose(34, 31, 130, 3000); // go to other side of field
-    chassis.moveToPose(59, 6, 142, 1000);
-    chassis.turnToPoint(59, 20, 1000, {.forwards=false}); 
-    chassis.moveToPoint(65, 63, 2000, {.forwards=false});
-    chassis.waitUntilDone();
-    chassis.moveToPose(59,11,0,2000, {.forwards=false});
-    chassis.moveToPose(59,-30,350,2000,{.forwards=false});
-    chassis.moveToPose(66,-63,320,2000,{.forwards=false});
-    chassis.waitUntilDone();
+    // /
     
 }
 
@@ -62,29 +54,38 @@ void prog_skills2() {
     pros::delay(500);
     chassis.moveToPose(-48, 0, 0, 1000);
     chassis.turnToPoint(-48,5,1000, {.forwards=false});
-    chassis.moveToPoint(-47,14, 4000, {.forwards=false, .maxSpeed = 50});
+    chassis.moveToPoint(-50,14, 4000, {.forwards=false, .maxSpeed = 50});
     chassis.waitUntilDone();
     clamp_sol.set_value(true);
     pros::delay(500);
-    chassis.turnToPoint(-49, 20, 1000);
+    chassis.turnToPoint(-49, 19, 1000);
     intake_motors.move(127);
-    chassis.moveToPoint(-49, 49, 4000, {.maxSpeed = 50});
+    chassis.moveToPoint(-49, 35, 4000, {.maxSpeed = 50});
+    chassis.waitUntilDone();
+    chassis.moveToPoint(-49, 45, 4000, {.maxSpeed = 50});
     chassis.waitUntilDone();
     chassis.turnToPoint(-70,50, 1000, {.forwards=false});
     chassis.waitUntilDone();
     clamp_sol.set_value(false);
     intake_motors.move(0);
-    chassis.moveToPoint(-58,60,1000, {.forwards=false});
+    chassis.moveToPoint(-58,60, 1000, {.forwards=false});
     chassis.waitUntilDone();
     pros::delay(500);
-    chassis.moveToPose(34, 7, 130, 3000); // go to other side of field
-    chassis.moveToPoint(55, -19, 3000, {.maxSpeed = 90});
+    chassis.moveToPose(0, 38, 270, 4000); // move to other side of the field
+    chassis.moveToPose(45, 16, 320, 4000, {.forwards=false}); 
     chassis.waitUntilDone();
-    chassis.setPose(0,0,130);
-    chassis.turnToPoint(0,-70,1000,{.forwards=false});
-    chassis.moveToPoint(0,-70,9000, {.forwards=false});
-    chassis.waitUntilDone();
-    chassis.moveToPoint(0,70,8000);
+    clamp_sol.set_value(true);
+    pros::delay(500); 
+    chassis.turnToPoint(-48,5,1000, {.forwards=false});
+    chassis.moveToPose(67, 60, 0, 3000,{.forwards=false});
+    //chassis.moveToPose(34, 7, 130, 3000); // go to other side of field
+    // chassis.moveToPoint(55, -19, 3000, {.maxSpeed = 90});
+    // chassis.waitUntilDone();
+    // chassis.setPose(0,0,130);
+    // chassis.turnToPoint(0,-70,1000,{.forwards=false});
+    // chassis.moveToPoint(0,-70,9000, {.forwards=false});
+    // chassis.waitUntilDone();
+    // chassis.moveToPoint(0,70,8000);
 
     // chassis.moveToPose(59, 3, 180, 2000);
     // chassis.moveToPose(59, 24, 180, 2000, {.forwards=false});
