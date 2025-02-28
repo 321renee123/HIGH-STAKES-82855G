@@ -60,15 +60,15 @@ void prog_skills2() {
     pros::delay(500);
     chassis.turnToPoint(-49, 19, 1000);
     intake_motors.move(127);
-    chassis.moveToPoint(-49, 35, 4000, {.maxSpeed = 50});
+    chassis.moveToPoint(-49, 35, 4000, {.maxSpeed = 50}); //grab first ring
     chassis.waitUntilDone();
-    chassis.moveToPoint(-49, 45, 4000, {.maxSpeed = 50});
+    chassis.moveToPoint(-49, 47, 4000, {.maxSpeed = 50});//grab second ring
     chassis.waitUntilDone();
     chassis.turnToPoint(-70,50, 1000, {.forwards=false});
     chassis.waitUntilDone();
     clamp_sol.set_value(false);
     intake_motors.move(0);
-    chassis.moveToPoint(-58,60, 1000, {.forwards=false});
+    chassis.moveToPoint(-58,60, 1000, {.forwards=false}); // put into the corner
     chassis.waitUntilDone();
     pros::delay(500);
     chassis.turnToPoint(0,38,1000);
@@ -86,6 +86,7 @@ void prog_skills2() {
     chassis.turnToPoint(67,-66, 1000, {.forwards=false});
     chassis.moveToPoint(67, -66, 3000, {.forwards=false});
     chassis.turnToPoint(71,-50, 1000, {.forwards=false});
+    chassis.moveToPoint(73, -66, 3000, {.forwards=false});
     //chassis.moveToPose(34, 7, 130, 3000); // go to other side of field
     // chassis.moveToPoint(55, -19, 3000, {.maxSpeed = 90});
     // chassis.waitUntilDone();
@@ -121,7 +122,71 @@ void prog_skills2() {
 }
 
 void prog_skills3() {
-
+    chassis.setPose(-65,0,90);
+    intake_motors.move(127);
+    pros::delay(1500);
+    chassis.moveToPoint(-47,0,1000);
+    chassis.turnToPoint(-47,-23, 500, {.forwards=false}); //clamp mogo
+    chassis.moveToPoint(-47, -23, 800, {.forwards=false});
+    clamp_sol.set_value(true);
+    pros::delay(500);
+    chassis.turnToPoint(-20,-23, 700); //get first ring
+    chassis.moveToPoint(-20, -23, 1000);  
+    intake_motors.move(127);  
+    chassis.turnToPoint(3,-60, 700); //get second ring
+    chassis.moveToPoint(3, -60, 1000);    
+    chassis.turnToPoint(-10,-47, 700); //position to get all three rings
+    chassis.moveToPoint(-10, -47, 1000);   
+    chassis.turnToPoint(-61,-47, 500); //intake all three rings
+    chassis.moveToPoint(-61, -47, 1000); 
+    chassis.moveToPoint(-47, -47, 600, {.forwards=false}); //move to the point above the last ring
+    chassis.turnToPoint(-47,-63, 700); //intake last ring
+    chassis.moveToPoint(-47, -63, 1000); 
+    chassis.turnToPoint(-63,-69, 700, {.forwards=false}); //put mogo into corner
+    chassis.waitUntilDone();
+    clamp_sol.set_value(false);
+    chassis.moveToPoint(-63, -69, 1000, {.forwards=false});  
+    chassis.turnToPoint(-47,-46,700); //move out of corner
+    chassis.moveToPoint(-47,-46,700);
+    chassis.waitUntilDone();
+    chassis.turnToPoint(-47,23,700, {.forwards=false}); // move to second mogo
+    chassis.moveToPoint(-47,23,1000, {.forwards=false});
+    clamp_sol.set_value(true);
+    pros::delay(200);
+    chassis.turnToPoint(-23,23,500); //move to ring on the right
+    chassis.moveToPoint(-23,23,800);
+    chassis.turnToPoint(0,59,500); //move to ring in the middle
+    chassis.moveToPoint(0,59,900);
+    chassis.turnToPoint(-12,47,700); //align with 3 rings
+    chassis.moveToPoint(-12,47,700);
+    chassis.turnToPoint(-64,47,600); //move to 3 rings
+    chassis.moveToPoint(-64,47,1500);
+    chassis.waitUntilDone();
+    chassis.moveToPoint(-47,47,700, {.forwards=false}); // back towards last ring
+    chassis.turnToPoint(-47,61,700); // get last ring
+    chassis.moveToPoint(-47,61,1000); 
+    chassis.turnToPoint(-65,65,500, {.forwards=false}); // push mogo into corner
+    chassis.waitUntilDone();
+    clamp_sol.set_value(false);
+    chassis.moveToPoint(-65,65,800, {.forwards=false});
+    chassis.waitUntilDone();
+    pros::delay(500);
+    chassis.turnToPoint(0,38,500);
+    chassis.moveToPoint(0, 38, 1000); // move to other side of the field
+    chassis.turnToPoint(52, 10, 1000, {.forwards=false});
+    chassis.moveToPoint(52, 10, 4000, {.forwards=false}); 
+    chassis.waitUntilDone();
+    pros::delay(500); 
+    chassis.turnToPoint(65,60,1000, {.forwards=false});
+    chassis.moveToPoint(65, 60,3000,{.forwards=false}); //place mogo in corner
+    chassis.turnToPoint(55,55, 1000, {.forwards=false}); 
+    chassis.moveToPoint(55, 55, 3000);
+    chassis.turnToPoint(60,-24, 1000, {.forwards=false});
+    chassis.moveToPoint(60, -24, 1000, {.forwards=false});
+    chassis.turnToPoint(67,-66, 1000, {.forwards=false});
+    chassis.moveToPoint(67, -66, 3000, {.forwards=false});
+    chassis.turnToPoint(71,-50, 1000, {.forwards=false});
+    chassis.moveToPoint(73, -66, 1000, {.forwards=false});
 }   
 
 void mogorush_red() {
