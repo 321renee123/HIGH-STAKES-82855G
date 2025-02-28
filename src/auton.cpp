@@ -42,7 +42,7 @@ void prog_skills2() {
     clamp_sol.set_value(true);
     pros::delay(500);
     chassis.turnToPoint(-54,-50.5,1000);
-    chassis.moveToPoint(-54, -57, 5000, {.maxSpeed=50}); 
+    chassis.moveToPoint(-54, -57, 3000, {.maxSpeed=50}); 
     chassis.waitUntilDone();
     pros::delay(1000);
     chassis.turnToPoint(-70,-68, 1000, {.forwards=false});
@@ -53,8 +53,8 @@ void prog_skills2() {
     intake_motors.move(0);
     pros::delay(500);
     chassis.moveToPose(-48, 0, 0, 1000);
-    chassis.turnToPoint(-48,5,1000, {.forwards=false});
-    chassis.moveToPoint(-50,14, 4000, {.forwards=false, .maxSpeed = 50});
+    chassis.turnToPoint(-50,5,1000, {.forwards=false});
+    chassis.moveToPoint(-50,14, 4000, {.forwards=false, .maxSpeed = 50}); // go to second mogo
     chassis.waitUntilDone();
     clamp_sol.set_value(true);
     pros::delay(500);
@@ -73,12 +73,19 @@ void prog_skills2() {
     pros::delay(500);
     chassis.turnToPoint(0,38,1000);
     chassis.moveToPoint(0, 38, 4000); // move to other side of the field
-    chassis.turnToPoint(45, 0, 1000, {.forwards=false});
-    chassis.moveToPoint(45, 0, 4000, {.forwards=false}); 
+    chassis.turnToPoint(52, 10, 1000, {.forwards=false});
+    chassis.moveToPoint(52, 10, 4000, {.forwards=false}); 
     chassis.waitUntilDone();
     pros::delay(500); 
-    chassis.turnToPoint(67,60,1000, {.forwards=false});
-    chassis.moveToPoint(67, 60,3000,{.forwards=false});
+    chassis.turnToPoint(65,60,1000, {.forwards=false});
+    chassis.moveToPoint(65, 60,3000,{.forwards=false}); //place mogo in corner
+    chassis.turnToPoint(55,55, 1000, {.forwards=false}); 
+    chassis.moveToPoint(55, 55, 3000);
+    chassis.turnToPoint(60,-24, 1000, {.forwards=false});
+    chassis.moveToPoint(60, -24, 3000, {.forwards=false});
+    chassis.turnToPoint(67,-66, 1000, {.forwards=false});
+    chassis.moveToPoint(67, -66, 3000, {.forwards=false});
+    chassis.turnToPoint(71,-50, 1000, {.forwards=false});
     //chassis.moveToPose(34, 7, 130, 3000); // go to other side of field
     // chassis.moveToPoint(55, -19, 3000, {.maxSpeed = 90});
     // chassis.waitUntilDone();
@@ -129,6 +136,8 @@ void mogorush_red() {
     chassis.waitUntilDone();
     chassis.turnToPoint(-24,0, 3000);
     chassis.moveToPoint(-24,-2,3000);
+    chassis.waitUntilDone();
+    intake_motors.move(0);
 }
 
 void mogorush_blue(){
@@ -143,6 +152,8 @@ void mogorush_blue(){
     chassis.waitUntilDone();
     chassis.turnToPoint(24,0, 3000);
     chassis.moveToPoint(24,-2,3000);
+    chassis.waitUntilDone();
+    intake_motors.move(0);
 }
 
 void ringside_red() {
@@ -163,7 +174,7 @@ void ringside_red() {
     chassis.moveToPoint(-28,51,3000,{.maxSpeed=100}); //grabbing ring to the side
     chassis.waitUntilDone();
     chassis.turnToPoint(-13,45,1000);
-    chassis.moveToPoint(-12,45,2000,{.maxSpeed = 100});//grabbing ring on the line
+    chassis.moveToPoint(-13,45,2000,{.maxSpeed = 100});//grabbing ring on the line
     chassis.waitUntilDone();
     chassis.turnToPoint(-25,2,1000);
     chassis.moveToPoint(-21,9,2000);

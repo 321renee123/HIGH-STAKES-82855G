@@ -75,7 +75,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	ringside_red();
+	prog_skills2();
 	
 }
 
