@@ -146,23 +146,29 @@ void mogorush_blue(){
 }
 
 void ringside_red() {
-    chassis.setPose(-53,23,0);
-    chassis.moveToPoint(-53,0,1000, {.forwards=false});
-    chassis.turnToPoint(-64,0,1000, {.forwards=false});
-    chassis.moveToPoint(-64,0,1000,{.forwards=false});
+    chassis.setPose(-53,24,0);
+    chassis.moveToPoint(-53,1.3,1000, {.forwards=false});
+    chassis.turnToPoint(-60.5,1.3,1000, {.forwards=false});
+    chassis.moveToPoint(-59,1.3,1000,{.forwards=false});
     chassis.waitUntilDone();
     intake_motors.move(127);
-    pros::delay(2000);
-    chassis.moveToPoint(-57, 0, 1000);
-    chassis.turnToPoint(-23,23,1000, {.forwards=false});
-    chassis.moveToPoint(-23,23, 4000, {.forwards=false, .maxSpeed=40});
+    pros::delay(1000);
+    chassis.moveToPoint(-40, 1.7, 1000);
+    chassis.turnToPoint(-26,23,1000, {.forwards=false});
+    chassis.moveToPoint(-26,23, 3500, {.forwards=false, .maxSpeed = 60});
     chassis.waitUntilDone();
     clamp_sol.set_value(true);
     pros::delay(500);
-    chassis.turnToPoint(-23,52,1000);
-    chassis.moveToPoint(-23,52,3000,{.maxSpeed = 90});
-    chassis.turnToPoint(-24,2,1000);
-    chassis.moveToPoint(-24,2,2000);
+    chassis.turnToPoint(-28,52,1000);
+    chassis.moveToPoint(-28,51,3000,{.maxSpeed=100}); //grabbing ring to the side
+    chassis.waitUntilDone();
+    chassis.turnToPoint(-13,45,1000);
+    chassis.moveToPoint(-12,45,2000,{.maxSpeed = 100});//grabbing ring on the line
+    chassis.waitUntilDone();
+    chassis.turnToPoint(-25,2,1000);
+    chassis.moveToPoint(-21,9,2000);
+    chassis.moveToPoint(-25,2,2000,{.maxSpeed = 50});
+
 }
 
 void ringside_blue() {
@@ -179,11 +185,11 @@ void ringside_blue() {
     chassis.waitUntilDone();
     clamp_sol.set_value(true);
     pros::delay(500);
-    chassis.turnToPoint(26,52,1000);
-    chassis.moveToPoint(26,51,3000,{.maxSpeed=100});
+    chassis.turnToPoint(28,52,1000);
+    chassis.moveToPoint(28,51,3000,{.maxSpeed=100}); //grabbing ring to the side
     chassis.waitUntilDone();
     chassis.turnToPoint(13,45,1000);
-    chassis.moveToPoint(13,45,2000,{.maxSpeed = 100});
+    chassis.moveToPoint(12,45,2000,{.maxSpeed = 100});//grabbing ring on the line
     chassis.waitUntilDone();
     chassis.turnToPoint(25,2,1000);
     chassis.moveToPoint(25,2,2000);
