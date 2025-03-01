@@ -73,9 +73,13 @@ void competition_initialize() {}
  * If the robot is disabled or communications is lost, the autonomous task
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
- */
+ */	
 void autonomous() {
-	prog_skills2();
+	// ringside_red();
+	// mogorush_red();
+	// ringside_blue();
+	// mogorush_blue();
+	 prog_skills3();
 	
 }
 
