@@ -76,10 +76,10 @@ void competition_initialize() {}
  */	
 void autonomous() {
 	// ringside_red();
-	// mogorush_red();
+	// mogorush_red(); //nextws
 	// ringside_blue();
-	// mogorush_blue();
-	 prog_skills3();
+	mogorush_blue();
+	// prog_skills3();
 	
 }
 

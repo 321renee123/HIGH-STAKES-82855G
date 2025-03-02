@@ -165,21 +165,23 @@ void prog_skills3()
     chassis.turnToPoint(-20, 14, 700); // get first ring
     chassis.moveToPoint(-20, 14, 1000);
     intake_motors.move(127);
-    chassis.turnToPoint(3, 60, 700); // get second ring
-    chassis.moveToPoint(3, 60, 1000);
-    chassis.turnToPoint(-22, 40, 700); // position to get all three rings
-    chassis.moveToPoint(-22, 40, 1000);
-    chassis.turnToPoint(-70, 40, 500); // intake all three rings
-    chassis.moveToPoint(-70, 40, 1500);
+    chassis.turnToPoint(-1, 60, 700); // get second ring
+    chassis.moveToPoint(-1, 60, 1000);
+    chassis.turnToPoint(-22, 38, 700); // position to get all three rings
+    chassis.moveToPoint(-22, 38, 1000);
+    chassis.turnToPoint(-70, 38, 500); // intake all three rings
+    chassis.moveToPoint(-70, 38, 1500);
     chassis.waitUntilDone();
-    chassis.moveToPoint(-77, 40, 1000);
-    chassis.moveToPoint(-52, 40, 600, {.forwards = false}); // move to the point above the last ring
-    chassis.turnToPoint(-52, 63, 700);                      // intake last ring
-    chassis.moveToPoint(-50, 63, 1000);
-    chassis.turnToPoint(-65, 71, 700, {.forwards = false}); // put mogo into corner
+    chassis.moveToPoint(-77, 38, 1000);
+    chassis.moveToPoint(-48, 38, 600, {.forwards = false}); // move to the point above the last ring
+    chassis.turnToPoint(-48, 63, 700);                      // intake last ring
+    chassis.moveToPoint(-48, 63, 1000);
+    chassis.waitUntilDone();
+    chassis.moveToPoint(-52, 55, 600, {.forwards = false}); // move backwards
+    chassis.turnToPoint(-70, 70, 700, {.forwards = false}); // put mogo into corner
     chassis.waitUntilDone();
     clamp_sol.set_value(false);
-    chassis.moveToPoint(-65, 71, 1000, {.forwards = false});
+    chassis.moveToPoint(-70, 72, 1000, {.forwards = false});
     // chassis.waitUntilDone();
     // pros::delay(500);
     // chassis.turnToPoint(0,38,500);
